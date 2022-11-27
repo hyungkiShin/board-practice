@@ -47,7 +47,7 @@ class ArticleControllerTest {
         // when then
         mvc.perform(get("/articles/1")) // GET 요청
                 .andExpect(status().isOk()) // 200
-                .andExpect(content().contentType(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
                 .andExpect(view().name("articles/detail")) // 200
                 .andExpect(model().attributeExists("articles")) // model 에 articles 가 있는지 확인
                 .andExpect(model().attributeExists("articleComments"));
@@ -62,7 +62,7 @@ class ArticleControllerTest {
         // when then
         mvc.perform(get("/articles/search")) // GET 요청
                 .andExpect(status().isOk()) // 200
-                .andExpect(content().contentType(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
                 .andExpect(model().attributeExists("articles/search"));
     }
 
@@ -75,7 +75,7 @@ class ArticleControllerTest {
         // when then
         mvc.perform(get("/articles/search-hashtag")) // GET 요청
                 .andExpect(status().isOk()) // 200
-                .andExpect(content().contentType(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
                 .andExpect(model().attributeExists("articles/search-hashtag"));
     }
 }
