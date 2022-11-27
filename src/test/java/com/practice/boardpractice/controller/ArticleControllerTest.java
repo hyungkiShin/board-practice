@@ -1,10 +1,12 @@
 package com.practice.boardpractice.controller;
 
+import com.practice.boardpractice.config.SecurityConfig;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -15,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @DisplayName("View 컨트롤러 - 게시글")
+@Import(SecurityConfig.class)
 @WebMvcTest(ArticleController.class) // @WebMvcTest 는 @Controller, @ControllerAdvice, @JsonComponent, Filter, WebMvcConfigurer 를 스캔한다.
 class ArticleControllerTest {
 
@@ -53,7 +56,6 @@ class ArticleControllerTest {
                 .andExpect(model().attributeExists("articleComments"));
     }
 
-    @Disabled("구현중")
     @Test
     @DisplayName("[view] [GET] 게시글 리스트 (검색) 페이지 -  정상 호출")
     void 게시글_리스트_검색_페이지_정상_호출() throws Exception {
@@ -66,7 +68,6 @@ class ArticleControllerTest {
                 .andExpect(model().attributeExists("articles/search"));
     }
 
-    @Disabled("구현중")
     @Test
     @DisplayName("[view] [GET] 게시글 해시태그 (검색) 페이지 -  정상 호출")
     void 게시글_해시태그_검색_페이지_정상_호출() throws Exception {
