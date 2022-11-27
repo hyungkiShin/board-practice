@@ -25,7 +25,6 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
-    @Disabled("구현중")
     @Test
     @DisplayName("[view] [GET] 게시글 리스트 (게시판) 페이지 -  정상 호출")
     void 게시글_리스트_페이지_정상_호출() throws Exception {
@@ -34,7 +33,7 @@ class ArticleControllerTest {
         // when then
         mvc.perform(get("/articles")) // GET 요청
                 .andExpect(status().isOk()) // 200
-                .andExpect(content().contentType(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML)) // 응답 타입이 HTML 이다.
                 .andExpect(view().name("articles/index")) // 200
                 .andExpect(model().attributeExists("articles")); // model 에 articles 가 있는지 확인
     }
