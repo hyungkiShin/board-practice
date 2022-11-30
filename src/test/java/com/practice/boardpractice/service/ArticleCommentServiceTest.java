@@ -2,6 +2,7 @@ package com.practice.boardpractice.service;
 
 import com.practice.boardpractice.domain.Article;
 import com.practice.boardpractice.domain.ArticleComment;
+import com.practice.boardpractice.domain.UserAccount;
 import com.practice.boardpractice.dto.ArticleCommentDto;
 import com.practice.boardpractice.repository.ArticleCommentRepository;
 import com.practice.boardpractice.repository.ArticleRepository;
@@ -37,7 +38,7 @@ class ArticleCommentServiceTest {
         // given
         Long articleId = 1L;
 
-        given(articleRepository.findById(articleId)).willReturn(Optional.of(Article.of("title", "content", "#java")));
+        given(articleRepository.findById(articleId)).willReturn(Optional.of(Article.of(UserAccount.of("uno", "pw", null, null, null),"title", "content", "#java")));
         // when
         List<ArticleCommentDto> articleComments = sut.searchArticleComment(1L);
         // then
